@@ -5,7 +5,7 @@ import os
 
 load_dotenv()
 
-def query_db(query):
+def get_query_from_db(query):
 
     user = os.getenv("DB_USER")
     password = os.getenv("DB_PASSWORD")
@@ -21,9 +21,3 @@ def query_db(query):
         rows = output_query.fetchall()
         columns_name = list(output_query.keys())
     return pd.DataFrame(rows, columns=columns_name)
-
-pd.set_option('display.max_columns', None)
-pd.set_option('display.expand_frame_repr', False)
-query = "SELECT * FROM CoopApartmentBorrowers cab"
-result_df = query_db(query)
-print(result_df)
