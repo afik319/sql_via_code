@@ -2,7 +2,13 @@
 
 This script provides the `get_query_from_db` function, designed to connect to a SQL Server database, execute a specified query, and optionally create a backup of a table as a CSV file.
 
-#### Setup Instructions:
+#### Function Usage
+
+- The `get_query_from_db(query, table_to_backup)` function accepts two parameters:
+  - `query`: A SQL query string to execute on the database.
+  - `table_to_backup`: The name of a table to back up to a CSV file. If you don't want to create a backup, set this parameter to `None`.
+
+#### Setup Instructions
 
 1. **Environment Variables**:
    - The script requires a `.env` file to load database credentials and connection details.
@@ -14,7 +20,7 @@ This script provides the `get_query_from_db` function, designed to connect to a 
      DB_NAME=
      DB_DRIVER=ODBC+Driver+17+for+SQL+Server
      ```
-     Ensure that `DB_DRIVER` specifies the SQL Server ODBC driver.
+     Leave `DB_DRIVER` unchanged, and fill in the other variables with your database details.
 
 2. **Install Dependencies**:
    - Run the following command to install all required dependencies listed in `requirements.txt`:
@@ -22,9 +28,7 @@ This script provides the `get_query_from_db` function, designed to connect to a 
      pip install -r requirements.txt
      ```
 
-3. **Function Usage**:
-   - Use the `get_query_from_db(query, table_to_backup)` function to execute a query on the specified database. If a table name is provided for `table_to_backup`, the script will back up that table to a CSV file in the current directory.
-
 #### Example:
    ```python
-   result_df = get_query_from_db("SELECT * FROM your_table", "your_table_to_backup")
+   query = "SELECT * FROM your_table"
+   result_df = get_query_from_db(query, "your_table_to_backup")
