@@ -3,3 +3,7 @@
 .idea
 *.csv
 *.md
+dist
+sql_via_code.egg-info
+MANIFEST.in
+setup.py
